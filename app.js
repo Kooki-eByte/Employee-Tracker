@@ -21,11 +21,12 @@ const userChoices = [
   "View All Departments",
   "Add Department",
   "Remove Department",
+  "Exit Program",
 ];
 
 // Creates and logs the banner into the console
 console.log(
-  chalk.red(
+  chalk.green(
     figlet.textSync("Employee Manager", {
       font: "Doom",
       horizontalLayout: "fitted",
@@ -35,6 +36,20 @@ console.log(
     })
   )
 );
+
+function endApp() {
+  console.log(
+    chalk.red(
+      figlet.textSync("Goodbye!", {
+        font: "Doom",
+        horizontalLayout: "fitted",
+        verticalLayout: "fitted",
+        width: 80,
+        whitespaceBreak: true,
+      })
+    )
+  );
+}
 
 // Getting the connection with the database (You will plug in your own database info here)
 // var connection = mysql.createConnection({
@@ -103,6 +118,10 @@ function startApp() {
 
         case userChoices[11]:
           console.log("12");
+          break;
+
+        case userChoices[12]:
+          endApp();
           break;
       }
     });
