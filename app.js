@@ -1,9 +1,8 @@
 // Dependencies used in this file
-const fs = require("fs");
 const inquirer = require("inquirer");
 const chalk = require("chalk");
 const figlet = require("figlet");
-const mysql = require("mysql");
+const viewEmployees = require("./lib/viewEmployees");
 
 // Other Modules used for classes and other helpers
 
@@ -51,16 +50,6 @@ function endApp() {
   );
 }
 
-// Getting the connection with the database (You will plug in your own database info here)
-// var connection = mysql.createConnection({
-//   host: "localhost",
-//   user: "me",
-//   password: "secret",
-//   database: "my_db",
-// });
-
-// connection.connect();
-
 // Function to start the program and will be where the user selects options
 function startApp() {
   inquirer
@@ -73,7 +62,10 @@ function startApp() {
     .then((answer) => {
       switch (answer.choice) {
         case userChoices[0]:
-          console.log("1");
+          viewEmployees();
+          setTimeout(function () {
+            startApp();
+          }, 2000);
           break;
 
         case userChoices[1]:
@@ -125,15 +117,6 @@ function startApp() {
           break;
       }
     });
-  //   connection.query("SELECT  + 1 AS solution", function (
-  //     error,
-  //     results,
-  //     fields
-  //   ) {
-  //     if (error) throw error;
-  //     console.log("The solution is: ", results[0].solution);
-  //   });
-  //   connection.end();
 }
 
 startApp();
