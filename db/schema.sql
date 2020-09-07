@@ -55,6 +55,6 @@ CREATE TABLE department
             (role_id) REFERENCES role
             (id),
     FOREIGN KEY
-            (manager_id) REFERENCES role
+            (manager_id) REFERENCES employee
             (id)
 );
