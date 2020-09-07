@@ -88,8 +88,11 @@ function startApp() {
           console.log("6");
           break;
 
-        case userChoices[6]:
-          console.log("7");
+        case userChoices[6]: // view all roles
+          viewRoles();
+          setTimeout(function () {
+            startApp();
+          }, 2000);
           break;
 
         case userChoices[7]:
@@ -100,7 +103,7 @@ function startApp() {
           console.log("9");
           break;
 
-        case userChoices[9]:
+        case userChoices[9]: // view all departments
           console.log("10");
           break;
 
