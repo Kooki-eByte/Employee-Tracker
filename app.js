@@ -2,7 +2,6 @@
 const inquirer = require("inquirer");
 const chalk = require("chalk");
 const figlet = require("figlet");
-const viewEmployees = require("./lib/viewEmployees");
 
 // Other Modules used for classes and other helpers
 
@@ -48,6 +47,7 @@ function endApp() {
       })
     )
   );
+  process.exit();
 }
 
 // Function to start the program and will be where the user selects options
@@ -60,66 +60,14 @@ function startApp() {
       choices: userChoices,
     })
     .then((answer) => {
-      switch (answer.choice) {
-        case userChoices[0]:
-          viewEmployees();
-          setTimeout(function () {
-            startApp();
-          }, 2000);
-          break;
-
-        case userChoices[1]:
-          console.log("2");
-          break;
-
-        case userChoices[2]:
-          console.log("3");
-          break;
-
-        case userChoices[3]:
-          console.log("4");
-          break;
-
-        case userChoices[4]:
-          console.log("5");
-          break;
-
-        case userChoices[5]:
-          console.log("6");
-          break;
-
-        case userChoices[6]: // view all roles
-          viewRoles();
-          setTimeout(function () {
-            startApp();
-          }, 2000);
-          break;
-
-        case userChoices[7]:
-          console.log("8");
-          break;
-
-        case userChoices[8]:
-          console.log("9");
-          break;
-
-        case userChoices[9]: // view all departments
-          console.log("10");
-          break;
-
-        case userChoices[10]:
-          console.log("11");
-          break;
-
-        case userChoices[11]:
-          console.log("12");
-          break;
-
-        case userChoices[12]:
-          endApp();
-          break;
-      }
+      const sqlRoute = require("./lib/databasePath")(answer.choice);
     });
 }
 
 startApp();
+
+module.exports = {
+  startApp: startApp,
+  endApp: endApp,
+  userChoices: userChoices,
+};
