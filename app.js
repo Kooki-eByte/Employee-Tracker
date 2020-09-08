@@ -60,7 +60,7 @@ function startApp() {
       choices: userChoices,
     })
     .then((answer) => {
-      const sqlRoute = require("./lib/databasePath")(answer.choice);
+      require("./lib/databasePath")(answer.choice);
     });
 }
 
