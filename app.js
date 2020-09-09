@@ -35,6 +35,7 @@ console.log(
   )
 );
 
+// Creates and logs the banner into the console when leaving the app
 function endApp() {
   console.log(
     chalk.red(
